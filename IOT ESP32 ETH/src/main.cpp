@@ -4,12 +4,12 @@
 #include "DHTesp.h"
 #include <stdlib.h>
  
-const char* ssid = "PC_Master_Race";
-const char* password =  "12345678";
+const char* ssid = "LAPTOP-G5G3R7PI 2052";
+const char* password =  "Contrasena";
 const char* mqttServer = "broker.emqx.io";
 const int mqttPort = 1883;
-const char* mqttUser = "theguerorex";
-const char* mqttPassword = "12345678";
+const char* mqttUser = "Kgallardo619";
+const char* mqttPassword = "Cucaracha123";
  
 WiFiClient espClient;
 PubSubClient client(espClient);

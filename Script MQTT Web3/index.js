@@ -1,25 +1,27 @@
+// Constantes de web3 y mqqt, que permitira el despligue de la Web App 
 const Web3 = require('web3');
 const mqtt = require('mqtt');
 
-
+// variable que permitira acceder a la dirección HTTP://127.0.0.1:7545
 var web3 = new Web3(new Web3.providers.HttpProvider("HTTP://127.0.0.1:7545"));
-const address = "0x7Cf36Ec3C33ef7FEda133A444001F2b5a1d5BFe8";
+// Se crea una constante de tipo direccioón, donde se colocara la wallet de rinkeby
+const address = "0x12AD17f192891b1Ec9b6c15E9a287d9FF70b1042";
 
-
+// Permitira la conexion del broker de protocolo de comunicación mqqt mediante el puerto 1883
 const host = 'broker.emqx.io'
 const port = '1883'
 const clientId = `mqtt_${Math.random().toString(16).slice(3)}`
-
+//Conexión del protocolo mqqt
 const connectUrl = `mqtt://${host}:${port}`
 const client = mqtt.connect(connectUrl, {
   clientId,
   clean: true,
   connectTimeout: 4000,
-  username: 'theguerorex',
-  password: '12345678',
+  username: 'Kgallardo619',
+  password: 'Cucaracha123',
   reconnectPeriod: 1000,
 })
-
+// Constante de topic, que permitira ala conexión de la placa ESP32
 const topic = 'ESP32ETH/TEMPERATURA'
 
 
@@ -218,7 +220,7 @@ const myContract = new web3.eth.Contract([
 
 
 
-
+//
 client.on('connect', () => {
   console.log('Connected')
   client.subscribe([topic], () => {
@@ -227,9 +229,9 @@ client.on('connect', () => {
 })
 client.on('message', (topic, payload) => {
   console.log(parseInt("" + payload))
-	myContract.methods.setTemp(parseInt("" + payload)).send({ from: "0xedFbFd305f3487fbFD93B48163AAFa89Bbebf8e7", gas: 6721975, gasPrice: '30000000' });
+	myContract.methods.setTemp(parseInt("" + payload)).send({ from: "0x2a1642d1a4e93c28bd230694f5eeb7c42996af6f", gas: 6721975, gasPrice: '30000000' });
 
-	
-    
-  
+
+
+
 })
